@@ -7,9 +7,10 @@
 @stop
 
 @section('content')
-    
+
+
 	
-        <button class="btn btn-primary"><i class="fa fa-plus"></i> Add New</button>
+        <a href="{{ route('customer.create') }}"><button class="btn btn-primary" ><i class="fa fa-plus"></i> Add New</button></a>
           <!-- Main content -->
     <section class="content">
       <div class="row">
@@ -899,6 +900,7 @@
       <!-- /.row -->
     </section>
     <!-- /.content -->
+    
 @stop 
 
 <!-- page script -->
