@@ -37,8 +37,15 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'cust_firstname' => 'required', 'cust_lastname' => 'required', 'user_id' => 'required', 'cust_no' => 'required', 'cust_loc' => 'required', 'cust_city' => 'required'
-        ]);
+            'cust_firstname' => 'required|min:5|max:35', 'cust_lastname' => 'required|min:5|max:35', 'user_id' => 'required|unique:users', 'cust_no' => 'required|numeric', 'cust_loc' => 'required', 'cust_city' => 'required'
+        ],[
+                'cust_firstname.required' => ' The first name field is required.',
+                'cust_firstname.min' => ' The first name must be at least 5 characters.',
+                'cust_firstname.max' => ' The first name may not be greater than 35 characters.',
+                'cust_lastname.required' => ' The last name field is required.',
+                'cust_lastname.min' => ' The last name must be at least 5 characters.',
+                'cust_lastname.max' => ' The last name may not be greater than 35 characters.',
+            ]);
        $input = $request->all();
        Customer::create($input);
        return redirect()->route('customer.index')
@@ -67,7 +74,8 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $customer = Customer::find($id);
+        return view('customer.edit',compact('customer'));
     }
 
     /**
@@ -79,7 +87,13 @@ class CustomerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'cust_firstname' => 'required', 'cust_lastname' => 'required', 'user_id' => 'required', 'cust_no' => 'required', 'cust_loc' => 'required', 'cust_city' => 'required'
+        ]);
+       
+        Customer::find($id)->update($request->all());
+        return redirect()->route('customer.index')
+                        ->with('success','Item updated successfully');
     }
 
     /**
@@ -90,6 +104,10 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Customer::find($id)->delete();
+
+        return redirect()->route('customer.index')
+
+                        ->with('success','Item deleted successfully');
     }
 }

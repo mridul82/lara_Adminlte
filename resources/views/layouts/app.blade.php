@@ -83,5 +83,6 @@
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
+    @yield('layouts.scripts')
 </body>
 </html>

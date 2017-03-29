@@ -40,8 +40,12 @@
                   <td>{{$customer->user_id}}</td>
                   <td> {{$customer->cust_city}}</td>
                   <td>{{$customer->created_at}}</td>
-                  <td><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o"></i></button>
-                  <button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></td>
+                  <td> <a href="{{ route('customer.edit', $customer->id) }}"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o"></i></button></a>
+                <a data-toggle="modal" data-target="#user-confirm-delete" ><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i>
+                </button></a>
+                      {{Form::open(['class' => 'del-user-btn', 'method' => 'delete','route' => ['customer.destroy', $customer->id]])}}
+                            {{Form::close()}}
+                </td>
                 </tr>
                 @endforeach
                 </tbody>
@@ -61,22 +65,29 @@
           </div>
           <!-- /.box -->
     
+    <!-- Modal -->
+      <div class="modal fade" id="user-confirm-delete" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Are You Sure?</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                 <button id="user-confirm-delete-btn" class="btn btn-danger btn-xs" >YES</button>
+          
+
+              
+             
+            <button class="btn btn-info btn-xs pull-right">NO</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
     <!-- /.content -->
     
 @stop 
 
-<!-- page script -->
-<script>
-  $(function () {
-    $("#example1").DataTable();
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false
-    });
-  });
-</script>
