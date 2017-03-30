@@ -48,30 +48,7 @@
 @yield('adminlte_js')
 
 
-<script>
-   $(function () {
-            var id;
-            $('.del-user-btn').click(function (e) {
-                id = $(this).data("id");
-                $('#user-confirm-delete').modal();
-            });
-            $("#user-confirm-delete-btn").on("click", function () {
-                $('.del-user-btn').submit();
-            });
-        });
 
-  $(function () {
-    $("#example1").DataTable();
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false
-    });
-  });
-</script>
 
 </body>
 </html>

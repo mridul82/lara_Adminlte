@@ -181,6 +181,16 @@ return [
                 ],
             ],
         ],
+        [
+            'text'       => 'Room',
+            'icon_color' => 'home',
+            'submenu' => [
+                [
+                    'text' => 'Room Information',
+                    'url'  => 'admin/room',
+                ],
+            ],
+        ],
         'LABELS',
         [
             'text'       => 'Important',

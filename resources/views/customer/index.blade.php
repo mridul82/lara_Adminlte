@@ -10,14 +10,14 @@
 
 
 	
-        <a href="{{ route('customer.create') }}"><button class="btn btn-primary" ><i class="fa fa-plus"></i> Add New</button></a>
+       
           <!-- Main content -->
     <section class="content">
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Customer</h3>
+              <h3 class="box-title"> <a href="{{ route('customer.create') }}"><button class="btn btn-primary" ><i class="fa fa-plus"></i> Add New</button></a></h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -40,10 +40,11 @@
                   <td>{{$customer->user_id}}</td>
                   <td> {{$customer->cust_city}}</td>
                   <td>{{$customer->created_at}}</td>
-                  <td> <a href="{{ route('customer.edit', $customer->id) }}"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o"></i></button></a>
-                <a data-toggle="modal" data-target="#user-confirm-delete" ><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i>
-                </button></a>
+                  <td> <a href="{{ route('customer.edit', $customer->id) }}"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o"></i>Edit</button></a>
+                <a ><button class="btn btn-danger btn-xs" onclick="del($customer->id)">
+               <i class="fa fa-trash"></i>Delete </button></a>
                       {{Form::open(['class' => 'del-user-btn', 'method' => 'delete','route' => ['customer.destroy', $customer->id]])}}
+                      
                             {{Form::close()}}
                 </td>
                 </tr>

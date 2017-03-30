@@ -37,7 +37,7 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'cust_firstname' => 'required|min:5|max:35', 'cust_lastname' => 'required|min:5|max:35', 'user_id' => 'required|unique:users', 'cust_no' => 'required|numeric', 'cust_loc' => 'required', 'cust_city' => 'required'
+            'cust_firstname' => 'required|min:5|max:35', 'cust_lastname' => 'required|min:5|max:35',  'cust_no' => 'required|numeric', 'cust_loc' => 'required', 'cust_city' => 'required'
         ],[
                 'cust_firstname.required' => ' The first name field is required.',
                 'cust_firstname.min' => ' The first name must be at least 5 characters.',
@@ -104,7 +104,7 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
-        Customer::find($id)->delete();
+        Customer::findOrFail($id)->delete();
 
         return redirect()->route('customer.index')
 
