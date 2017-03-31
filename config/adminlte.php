@@ -189,6 +189,10 @@ return [
                     'text' => 'Room Information',
                     'url'  => 'admin/room',
                 ],
+                [
+                    'text' => 'Room Price',
+                    'url'  => 'admin/price',
+                ],
             ],
         ],
         'LABELS',

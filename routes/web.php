@@ -22,6 +22,9 @@ Route::get('/home', 'HomeController@index');
 Route::group(['prefix' => 'admin'], function () {
 
 	Route::resource('customer', 'CustomerController');
+	Route::resource('room', 'RoomController');
+
+	Route::resource('price', 'RoomPriceController');
     
 });
 
