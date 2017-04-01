@@ -25,6 +25,9 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::resource('room', 'RoomController');
 
 	Route::resource('price', 'RoomPriceController');
+	
+	// Route::get('/getPrice/{id}', 'RoomPriceController@getPrice');
+	
     
 });
 

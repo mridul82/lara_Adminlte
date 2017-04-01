@@ -30,14 +30,14 @@
             </fieldset>
                     <div class="form-group ">
                       
-                      <label for="inputtext3" class="col-sm-2 control-label">Room Type</label>
-                      <div class="col-sm-10">
+                      <label for="inputtext3" class="col-sm-3 control-label">Room Type</label>
+                      <div class="col-sm-9">
                         <input type="text" class="form-control" name="room_type" placeholder="Room Type">
                       </div>
                     </div>
                            <div class="form-group">
-                      <label for="inputtext3" class="col-sm-2 control-label">Room Price</label>
-                      <div class="col-sm-10">
+                      <label for="inputtext3" class="col-sm-3 control-label">Room Price</label>
+                      <div class="col-sm-9">
                         <input type="text" class="form-control" name="room_price" placeholder="Room Price">
                       </div>
                      

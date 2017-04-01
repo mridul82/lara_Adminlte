@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 2',
+    'title' => 'Hotel Reservation',
 
     'title_prefix' => '',
 
@@ -173,25 +173,33 @@ return [
         'INFO SETTING',
         [
             'text'       => 'Customer',
-            'icon_color' => 'user',
+            'icon' => 'users',
             'submenu' => [
                 [
                     'text' => 'Customer Information',
                     'url'  => 'admin/customer',
+                    'icon_color' => 'aqua',
                 ],
             ],
         ],
         [
             'text'       => 'Room',
-            'icon_color' => 'home',
+            'icon' => 'home',
             'submenu' => [
                 [
                     'text' => 'Room Information',
                     'url'  => 'admin/room',
+                    'icon_color' => 'green',
                 ],
                 [
                     'text' => 'Room Price',
                     'url'  => 'admin/price',
+                    'icon_color' => 'red',
+                ],
+                [
+                    'text' => 'Room Reservation',
+                    'url'  => 'admin/reserve',
+                    'icon_color' => 'yellow',
                 ],
             ],
         ],

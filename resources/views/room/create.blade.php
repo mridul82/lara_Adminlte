@@ -31,7 +31,7 @@
                       <label for="inputtext3" class="col-sm-2 control-label">Room Type</label>
                       <div class="col-sm-4">
                         
-                              <select class="form-control" class="form-control" name="room_type" >
+                              <select class="form-control" id="room_type" name="room_type">
                             <option >--Select--</option>
                             @foreach ($room_lists as $room_list)
                               <option value="{{ $room_list->id }}">{{ $room_list->room_type }}</option>
@@ -44,7 +44,7 @@
                            <div class="form-group">
                       <label for="inputtext3" class="col-sm-2 control-label">Room Price</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" name="room_price" placeholder="Room Price">
+                        <input type="text" class="form-control" id="room_price" name="room_price" placeholder="Room Price" >
                       </div>
                       <label for="inputtext3" class="col-sm-2 control-label">Room Status</label>
                       <div class="col-sm-4">                      

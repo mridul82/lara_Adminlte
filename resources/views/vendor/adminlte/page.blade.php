@@ -147,6 +147,20 @@
     });
   });
 </script>
+<script type="text/javascript">
+ $('#room_type').on('change', function(e){
+    var id = $(this).val();
+    $.ajax({
+               type:'GET',
+               url:'{{url("admin/room")}}/'+id,
+               
+               success:function(data){
+                console.log(data);
+                  $("#room_price").val(data);
+               }
+            });
+});
+</script>
     @stack('js')
     @yield('js')
 @stop

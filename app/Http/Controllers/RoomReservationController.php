@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Room_price;
 
-class RoomPriceController extends Controller
+class RoomReservationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,7 @@ class RoomPriceController extends Controller
      */
     public function index()
     {
-        $room_prices = Room_price::orderBy('id', 'DESC')->get();
-        return view('room_price.index', compact('room_prices'));
+        return view('reserve.index');
     }
 
     /**
@@ -36,19 +34,7 @@ class RoomPriceController extends Controller
      */
     public function store(Request $request)
     {
-          $this->validate($request, [
-            'room_type' => 'required',  'room_price' => 'required', 
-        ],[
-                              
-                'room_type.required' => ' The room type field is required.',
-                'room_price.required' => ' The room price field is required.'
-                
-            ]);
-       $input = $request->all();
-       Room_price::create($input);
-       return redirect()->route('price.index')
-
-                        ->with('success','Item created successfully');
+        //
     }
 
     /**
@@ -59,7 +45,7 @@ class RoomPriceController extends Controller
      */
     public function show($id)
     {
-       
+        //
     }
 
     /**
@@ -95,9 +81,4 @@ class RoomPriceController extends Controller
     {
         //
     }
-
-    // public function getPrice($id)
-    // {
-    //     dd($id);
-    // }
 }

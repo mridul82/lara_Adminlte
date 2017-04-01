@@ -46,8 +46,12 @@ class RoomController extends Controller
                 'room_type.required' => ' The last name field is required.'
                 
             ]);
-       $input = $request->all();
-       Room::create($input);
+        $data = new Room;
+       $data->room_no = $request->room_no;
+       $data->room_type = Room_price::where('id', $request->room_type)->first()->room_type;
+       $data->room_price = $request->room_price;
+       $data->room_status = $request->room_status;
+       $data->save();
        return redirect()->route('room.index')
 
                         ->with('success','Item created successfully');
@@ -61,7 +65,9 @@ class RoomController extends Controller
      */
     public function show($id)
     {
-        //
+        $price = Room_price::where('id', $id)->first();
+       $room_price = $price->room_price;
+       return $room_price;
     }
 
     /**
