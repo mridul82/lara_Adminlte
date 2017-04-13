@@ -11,5 +11,8 @@ class Room extends Model
     ];
 
     
-    
+    public function room()
+    {
+        return $this->hasMany('App\Room');
+    }
 }

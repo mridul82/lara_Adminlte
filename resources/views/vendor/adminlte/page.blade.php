@@ -3,6 +3,12 @@
 @section('adminlte_css')
     <link rel="stylesheet"
           href="{{ asset('vendor/adminlte/dist/css/skins/skin-' . config('adminlte.skin', 'blue') . '.min.css')}} ">
+          <link rel="stylesheet"
+          href="https://cdn.datatables.net/fixedheader/3.1.2/css/fixedHeader.bootstrap.min.css">
+          <link rel="stylesheet"
+          href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css">
+
+
     @stack('css')
     @yield('css')
 @stop
@@ -132,20 +138,24 @@
 
 @section('adminlte_js')
     <script src="{{ asset('vendor/adminlte/dist/js/app.min.js') }}"></script>
-    <script>
+    <script src=" https://cdn.datatables.net/fixedheader/3.1.2/js/dataTables.fixedHeader.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js"></script>
+     <script src="https://cdn.datatables.net/responsive/2.1.1/js/responsive.bootstrap.min.js"></script>
    
 
-  $(function () {
-    
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": true,
-      "searching": true,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false
-    });
-  });
+
+    <script>
+   $(document).ready(function() {
+    var table = $('#example').DataTable( {
+        responsive: true
+    } );
+ 
+    new $.fn.dataTable.FixedHeader( table );
+} );
+
+
+
+
 </script>
 <script type="text/javascript">
  $('#room_type').on('change', function(e){
@@ -160,6 +170,24 @@
                }
             });
 });
+</script>
+<!-- for room serach ajax -->
+
+<script>
+    function getRoom()
+    {
+        var roomType = $('#room_type').val();
+         $.ajax({
+               type:'GET',
+               url:'{{url("admin/reserve/searchRoom")}}/'+roomType,
+               
+               success:function(data){
+                console.log(data);
+                  $("#ajaxResponse").html(data);
+                 
+               }
+            });
+    }
 </script>
     @stack('js')
     @yield('js')

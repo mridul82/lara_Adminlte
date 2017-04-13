@@ -20,8 +20,8 @@
               <h3 class="box-title"> <a href="{{ route('customer.create') }}"><button class="btn btn-primary" ><i class="fa fa-plus"></i> Add New</button></a></h3>
             </div>
             <!-- /.box-header -->
-            <div class="box-body">
-              <table id="example2" class="table table-bordered table-hover">
+            <div class="box-body" style="overflow-x:auto;">
+              <table id="example" class="table table-striped table-bordered table-responsive" cellspacing="0" width="100%">
                 <thead>               
                 <tr>
                   <th>Name</th>

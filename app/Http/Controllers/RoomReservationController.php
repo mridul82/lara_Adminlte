@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Room_price;
+use App\Room;
 
 class RoomReservationController extends Controller
 {
@@ -13,7 +15,9 @@ class RoomReservationController extends Controller
      */
     public function index()
     {
-        return view('reserve.index');
+        $room_lists = Room::where('room_status' ,1)->get();          
+   
+        return view('reserve.index')->with( 'room_lists' , $room_lists);
     }
 
     /**
@@ -80,5 +84,14 @@ class RoomReservationController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function searchRoom($roomType)    {
+        $room_type = Room_price::where('id', $roomType)->first();
+        
+        $rooms = Room::where('room_type', $room_type->room_type)->where('room_status', 1)->get();
+
+        return view('reserve.show_room')->with( 'rooms' , $rooms);
+        
     }
 }
